@@ -28,9 +28,9 @@ export const createAuth = (ctx: GenericCtx<DataModel>) => {
     },
     plugins: [
       convex({ authConfig }),
-      //   oAuthProxy({
-      //     productionURL: "https://ba-oauth-proxy-convex.bytaesu.com"
-      //   })
+      oAuthProxy({
+        productionURL: "https://ba-oauth-proxy-convex.bytaesu.com",
+      }),
     ],
     trustedOrigins: [
       "http://localhost:3000",
