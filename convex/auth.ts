@@ -29,13 +29,13 @@ export const createAuth = (ctx: GenericCtx<DataModel>) => {
     plugins: [
       convex({ authConfig }),
       oAuthProxy({
-        productionURL: "https://ba-oauth-proxy-convex.bytaesu.com",
+        productionURL: "https://ba-oauth-proxy-convex.vercel.app",
       }),
     ],
     trustedOrigins: [
       "http://localhost:3000",
       "https://ba-oauth-proxy-convex-*-taesu.vercel.app",
-      "https://ba-oauth-proxy-convex.bytaesu.com",
+      "https://ba-oauth-proxy-convex.vercel.app",
     ],
   });
 };
