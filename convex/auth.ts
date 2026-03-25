@@ -30,6 +30,8 @@ export const createAuth = (ctx: GenericCtx<DataModel>) => {
       convex({ authConfig }),
       oAuthProxy({
         productionURL: "https://ba-oauth-proxy-convex.vercel.app",
+        currentURL:
+          "https://ba-oauth-proxy-convex-git-preview-2-taesu.vercel.app",
       }),
     ],
     trustedOrigins: [
