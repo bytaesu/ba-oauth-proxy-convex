@@ -6,6 +6,7 @@ import { query } from "./_generated/server";
 import { betterAuth } from "better-auth/minimal";
 import authConfig from "./auth.config";
 import { oAuthProxy } from "better-auth/plugins";
+import { CURRENT_URL } from "./_currentUrl";
 
 const siteUrl = process.env.SITE_URL!;
 
@@ -30,7 +31,7 @@ export const createAuth = (ctx: GenericCtx<DataModel>) => {
       convex({ authConfig }),
       oAuthProxy({
         productionURL: "https://ba-oauth-proxy-convex.vercel.app",
-        currentURL: process.env.CURRENT_URL,
+        currentURL: CURRENT_URL,
       }),
     ],
     trustedOrigins: [

@@ -10,6 +10,7 @@
     "format": "pnpm prettier --write .",
     "build": "next build",
     "build:vercel": "npx tsx scripts/set-convex-env.ts && npx convex deploy --cmd 'npm run build'",
+    "prebuild": "npx tsx scripts/set-convex-env.ts",
     "start": "next start",
     "lint": "eslint . --ignore-pattern \"convex/_generated/**\""
   },

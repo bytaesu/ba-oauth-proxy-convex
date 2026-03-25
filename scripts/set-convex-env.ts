@@ -1,13 +1,15 @@
-import { execFileSync } from "node:child_process";
+import { writeFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 const vercelUrl = process.env.VERCEL_URL;
-if (!vercelUrl) {
-  console.log("VERCEL_URL not set, skipping CURRENT_URL setting");
-  process.exit(0);
-}
+const currentUrl = vercelUrl ? `https://${vercelUrl}` : undefined;
 
-const currentUrl = `https://${vercelUrl}`;
-console.log(`Setting CURRENT_URL=${currentUrl} in Convex`);
-execFileSync("npx", ["convex", "env", "set", "CURRENT_URL", currentUrl], {
-  stdio: "inherit",
-});
+const content = `// Auto-generated at build time
+export const CURRENT_URL: string | undefined = ${currentUrl ? `"${currentUrl}"` : "undefined"};
+`;
+
+const outPath = resolve(import.meta.dirname, "../convex/_currentUrl.ts");
+writeFileSync(outPath, content);
+console.log(
+  `Generated ${outPath} with CURRENT_URL=${currentUrl ?? "undefined"}`,
+);
