@@ -4,7 +4,7 @@ const Page = () => {
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 via-white to-gray-100 flex flex-col items-center justify-center p-4 gap-4">
       <Link href="/dashboard" className="text-blue-500 underline">
-        preview: Dashboard
+        Dashboard
       </Link>
     </div>
   );
